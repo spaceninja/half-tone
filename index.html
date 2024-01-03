@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Half-Tone</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@cloudfour/patterns@16.3.1/dist/standalone.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css"
+    />
+    <style>
+      dt {
+        font-weight: bold;
+      }
+      dd + dt {
+        margin-block-start: var(--rhythm);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="o-container o-container--prose o-container--pad">
+      <div class="o-container__content o-rhythm">
+        <h1>&lt;half-tone></h1>
+
+        <p class="u-text-small">
+          Return to the
+          <a href="https://github.com/spaceninja/half-tone">GitHub repo</a>.
+        </p>
+
+        <p>A simple web component to apply a halftone filter to an image.</p>
+
+        <div>
+          <half-tone id="example">
+            <img
+              src="https://images.unsplash.com/photo-1553514029-1318c9127859?cs=tinysrgb&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTM5NDAxMTk&ixlib=rb-1.2.1&auto=format&auto=compress&ar=1:1&fit=crop&w=1600"
+              srcset="
+                https://images.unsplash.com/photo-1553514029-1318c9127859?cs=tinysrgb&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTM5NDAxMTk&ixlib=rb-1.2.1&auto=format&auto=compress&ar=1:1&fit=crop&w=1600 1600w,
+                https://images.unsplash.com/photo-1553514029-1318c9127859?cs=tinysrgb&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTM5NDAxMTk&ixlib=rb-1.2.1&auto=format&auto=compress&ar=1:1&fit=crop&w=1200 1200w,
+                https://images.unsplash.com/photo-1553514029-1318c9127859?cs=tinysrgb&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTM5NDAxMTk&ixlib=rb-1.2.1&auto=format&auto=compress&ar=1:1&fit=crop&w=800   800w,
+                https://images.unsplash.com/photo-1553514029-1318c9127859?cs=tinysrgb&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTM5NDAxMTk&ixlib=rb-1.2.1&auto=format&auto=compress&ar=1:1&fit=crop&w=400   400w
+              "
+              alt=""
+            />
+          </half-tone>
+        </div>
+
+        <pre><code class="language-html">&lt;half-tone>
+  &lt;img src="..." alt="..." />
+&lt;/half-tone></code></pre>
+
+        <p>
+          You can configure the filter by setting any of the following
+          attributes on the <code>&lt;half-tone></code> element.
+        </p>
+
+        <ul>
+          <li>
+            <label for="dot-size"><code>dot-size</code></label>
+            <input
+              type="range"
+              id="dot-size"
+              value="4"
+              min="1"
+              data-unit="px"
+            />
+            <span class="display-value">4px</span>
+          </li>
+          <li>
+            <label for="dot-color"><code>dot-color</code></label>
+            <input type="color" id="dot-color" value="#333333" />
+          </li>
+          <li>
+            <label for="dot-contrast"><code>dot-contrast</code></label>
+            <input
+              type="range"
+              id="dot-contrast"
+              value="2000"
+              max="2000"
+              data-unit="%"
+            />
+            <span class="display-value">2000%</span>
+          </li>
+          <li>
+            <label for="dot-angle"><code>dot-angle</code></label>
+            <input
+              type="range"
+              id="dot-angle"
+              value="15"
+              max="360"
+              data-unit="deg"
+            />
+            <span class="display-value">15deg</span>
+          </li>
+          <li>
+            <label for="photo-brightness"><code>photo-brightness</code></label>
+            <input
+              type="range"
+              id="photo-brightness"
+              value="80"
+              max="200"
+              data-unit="%"
+            />
+            <span class="display-value">80%</span>
+          </li>
+          <li>
+            <label for="photo-contrast"><code>photo-contrast</code></label>
+            <input
+              type="range"
+              id="photo-contrast"
+              value="120"
+              max="1000"
+              data-unit="%"
+            />
+            <span class="display-value">120%</span>
+          </li>
+          <li>
+            <label for="photo-blur"><code>photo-blur</code></label>
+            <input
+              type="range"
+              id="photo-blur"
+              value="2"
+              max="20"
+              data-unit="px"
+            />
+            <span class="display-value">2px</span>
+          </li>
+          <li>
+            <label for="blend-mode"><code>blend-mode</code></label>
+            <select id="blend-mode">
+              <option value="normal">normal</option>
+              <option value="multiply">multiply</option>
+              <option value="screen">screen</option>
+              <option value="overlay">overlay</option>
+              <option value="darken">darken</option>
+              <option value="lighten">lighten</option>
+              <option value="color-dodge">color-dodge</option>
+              <option value="color-burn">color-burn</option>
+              <option value="hard-light" selected>hard-light</option>
+              <option value="soft-light">soft-light</option>
+              <option value="difference">difference</option>
+              <option value="exclusion">exclusion</option>
+              <option value="hue">hue</option>
+              <option value="saturation">saturation</option>
+              <option value="color">color</option>
+              <option value="luminosity">luminosity</option>
+            </select>
+          </li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <dl>
+          <dt>How does this work?</dt>
+          <dd>
+            If you'd like to know more about the CSS behind this filter, you can
+            check out
+            <a href="https://cloudfour.com/thinks/the-power-of-css-blend-modes/"
+              >this blog post</a
+            >!
+          </dd>
+
+          <dt>Can you make a version that does halftone colors?</dt>
+          <dd>
+            I'm probably not going to add that here, because this is powered by
+            a really simple set of CSS filters. You may be interested in
+            <a href="https://github.com/9am/img-halftone">&lt;img-halftone></a>,
+            which has a more advanced feature set.
+          </dd>
+          <dt>
+            Technically,
+            <a href="https://en.wikipedia.org/wiki/Halftone">halftone</a> is one
+            word.
+          </dt>
+          <dd>
+            That's not a question, but correct! However, web components are
+            required to have a hyphen, and I like <code>half-tone</code> better
+            than <code>halftone-image</code>.
+          </dd>
+        </dl>
+
+        <p class="u-text-small">
+          Return to the
+          <a href="https://github.com/spaceninja/half-tone">GitHub repo</a>.
+        </p>
+
+        <p class="u-text-small">
+          Photo by
+          <a href="https://unsplash.com/@wilks_and_cookies">Connor Wilkins</a>
+          on <a href="https://unsplash.com/photos/2crxTr4jCkc">Unsplash</a>.
+        </p>
+      </div>
+    </div>
+
+    <script type="module" src="half-tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script>
+      const rangeEls = document.querySelectorAll("input[type=range]");
+
+      const updateVar = (e) => {
+        const varValue = `${e.target.value}${e.target.dataset.unit}`;
+        const targetEl = document.querySelector("#example");
+        const parentEl = e.target.parentNode;
+        const displayValueEl = parentEl.querySelector(".display-value");
+        targetEl.setAttribute(e.target.id, varValue);
+        displayValueEl.textContent = varValue;
+      };
+
+      for (const rangeEl of rangeEls) {
+        rangeEl.addEventListener("input", updateVar);
+      }
+
+      const dotColorEl = document.querySelector("#dot-color");
+      dotColorEl.addEventListener("input", (e) => {
+        const targetEl = document.querySelector("#example");
+        targetEl.setAttribute("dot-color", e.target.value);
+      });
+
+      const blendModeEl = document.querySelector("#blend-mode");
+      blendModeEl.addEventListener("input", (e) => {
+        const targetEl = document.querySelector("#example");
+        targetEl.setAttribute("blend-mode", e.target.value);
+      });
+    </script>
+  </body>
+</html>
