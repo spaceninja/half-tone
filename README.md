@@ -13,7 +13,7 @@ Wrap a standard `<img>` element in a `<half-tone>` element, and it will automati
 ## Installation
 
 ```shell
-npm install @spaceninja/lite-model-viewer
+npm install @spaceninja/half-tone
 ```
 
 ## Usage
