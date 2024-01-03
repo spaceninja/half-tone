@@ -1,5 +1,5 @@
 {
-  "name": "half-tone",
+  "name": "@spaceninja/half-tone",
   "version": "1.0.0",
   "description": "A simple web component to apply a halftone filter to an image.",
   "author": "Scott Vandehey (https://spaceninja.com)",
